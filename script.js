@@ -1,5 +1,3 @@
-//arquivo para início da Reunião 7
-
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
@@ -10,15 +8,31 @@ const perguntas = [
     {
         enunciado: "Pergunta 1",
         alternativas: [
-            "Alternativa 1", 
-            "Alternativa 2"
+            {
+                texto: "Texto da primeira alternativa",
+                afirmacao: "Afirmacao 1"
+            },
+
+            {
+                texto: "texto da segunda alternativa ",
+                afirmacao : "Afirmacao da alternativa 2"
+            }
+             
+            
         ]
     },
     {
         enunciado: "Pergunta 2",
         alternativas: [
-            "Alternativa 1", 
-            "Alternativa 2"
+            {
+                texto: "Texto da alternativa 1",
+                afirmacao: "Afirmação da alternativa 1"
+            },
+            {
+                texto: "Texto da afirmação 2",
+                afirmacao: "Texto da afirmação 2"
+            }
+            
         ]
     } 
 ];
@@ -36,7 +50,11 @@ function mostraPergunta(){
 function mostraAlternativas(){
     for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa;
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", function (){
+            atual++;
+            mostraPergunta();
+        } )
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
